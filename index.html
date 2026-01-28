@@ -1,0 +1,1582 @@
+<!doctype html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Bungalow Freiriz – Ferienhaus mit Pool</title>
+
+  <style>
+    :root{
+      --bg:#f4f6fb;
+      --card:#ffffff;
+      --text:#0f172a;
+      --muted:#64748b;
+      --line:#e5e7eb;
+      --shadow:0 12px 28px rgba(15,23,42,.10);
+      --r:18px;
+      --accent:#10b981;
+      --accent2:#3b82f6;
+      --danger:#e11d48;
+      --okbg:rgba(16,185,129,.10);
+      --okbd:rgba(16,185,129,.22);
+      --warnbg:rgba(225,29,72,.08);
+      --warnbd:rgba(225,29,72,.20);
+    }
+
+    *{box-sizing:border-box}
+    body{
+      margin:0;
+      font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial;
+      color:var(--text);
+      background:
+        radial-gradient(1000px 650px at 12% 5%, rgba(59,130,246,.14), transparent 55%),
+        radial-gradient(900px 600px at 90% 0%, rgba(16,185,129,.12), transparent 55%),
+        var(--bg);
+    }
+    a{color:inherit}
+    .wrap{max-width:1140px;margin:0 auto;padding:18px 16px 60px}
+
+    header.top{
+      display:flex; gap:12px; align-items:center; justify-content:space-between;
+      flex-wrap:wrap;
+      padding:12px 14px;
+      border:1px solid var(--line);
+      border-radius:999px;
+      background:rgba(255,255,255,.80);
+      box-shadow:0 10px 22px rgba(15,23,42,.06);
+      backdrop-filter: blur(10px);
+    }
+    .brand{display:flex; align-items:center; gap:10px;}
+    .logo{
+      width:38px;height:38px;border-radius:14px;
+      background:linear-gradient(135deg,var(--accent),var(--accent2));
+      box-shadow:0 18px 30px rgba(16,185,129,.18);
+    }
+    .brand b{display:block;font-size:14px}
+    .brand small{display:block;color:var(--muted);margin-top:2px}
+    nav{display:flex;gap:8px;flex-wrap:wrap;align-items:center}
+    .pill{
+      text-decoration:none;
+      padding:9px 12px;
+      border-radius:999px;
+      border:1px solid var(--line);
+      background:#fff;
+      font-size:13px;
+      font-weight:800;
+    }
+    .pill:hover{box-shadow:0 10px 18px rgba(15,23,42,.08)}
+    .flags{display:flex; gap:8px; align-items:center}
+    .flag{
+      cursor:pointer;
+      border:1px solid var(--line);
+      background:#fff;
+      border-radius:999px;
+      padding:8px 10px;
+      font-size:18px;
+      line-height:1;
+      box-shadow:0 8px 16px rgba(15,23,42,.06);
+      user-select:none;
+    }
+    .flag.active{
+      border-color: rgba(16,185,129,.35);
+      box-shadow:0 12px 22px rgba(16,185,129,.18);
+    }
+
+    .hero{
+      margin-top:14px;
+      position:relative;
+      height:380px;
+      border-radius:24px;
+      overflow:hidden;
+      border:1px solid var(--line);
+      box-shadow:var(--shadow);
+      background:#0b1220;
+    }
+    .hero img{width:100%;height:100%;object-fit:cover;display:block;filter:brightness(.84) saturate(1.02)}
+    .hero .overlay{position:absolute;inset:0;background:linear-gradient(180deg, rgba(0,0,0,0) 20%, rgba(0,0,0,.62) 100%)}
+    .hero .content{
+      position:absolute; left:16px; right:16px; bottom:16px;
+      color:#fff;
+    }
+    .hero h1{margin:0;font-size:34px;letter-spacing:-.02em;line-height:1.05}
+    .hero p{margin:8px 0 0;opacity:.95;max-width:80ch}
+    .badges{display:flex;flex-wrap:wrap;gap:8px;margin-top:10px}
+    .badge{
+      padding:8px 10px;border-radius:999px;
+      background:rgba(255,255,255,.18);
+      border:1px solid rgba(255,255,255,.22);
+      font-weight:900;font-size:13px;
+      backdrop-filter: blur(10px);
+    }
+
+    .grid{
+      margin-top:14px;
+      display:grid;
+      grid-template-columns: 1.15fr .85fr;
+      gap:14px;
+      align-items:start;
+    }
+    @media (max-width: 980px){
+      .grid{grid-template-columns:1fr}
+      .hero{height:320px}
+      .hero h1{font-size:30px}
+    }
+
+    .card{
+      background:rgba(255,255,255,.84);
+      border:1px solid var(--line);
+      border-radius:var(--r);
+      box-shadow:var(--shadow);
+      padding:16px;
+      backdrop-filter: blur(10px);
+    }
+    .card h2{margin:0 0 10px;font-size:18px;letter-spacing:-.01em}
+    .muted{color:var(--muted);font-size:13px;margin:0;line-height:1.5}
+
+    label{display:block;font-size:13px;color:var(--muted);margin:10px 0 6px;font-weight:900}
+    input, select, textarea{
+      width:100%;
+      padding:12px 12px;
+      border-radius:14px;
+      border:1px solid var(--line);
+      background:#fff;
+      outline:none;
+      font-size:15px;
+    }
+    input:focus,select:focus,textarea:focus{
+      border-color: rgba(59,130,246,.55);
+      box-shadow: 0 0 0 4px rgba(59,130,246,.12);
+    }
+
+    .grid2{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+    .grid3{display:grid;grid-template-columns:1fr 1fr 1fr;gap:12px}
+    @media (max-width: 820px){ .grid2,.grid3{grid-template-columns:1fr} }
+
+    .kpi{
+      background:linear-gradient(180deg,#f8fafc,#ffffff);
+      border:1px solid var(--line);
+      border-radius:16px;
+      padding:12px;
+    }
+    .kpi .k{color:var(--muted);font-weight:900;font-size:13px;margin-bottom:6px}
+    .kpi .v{font-weight:950;font-size:26px}
+
+    .hint{
+      margin-top:12px;
+      padding:12px 14px;
+      border-radius:16px;
+      border:1px solid var(--okbd);
+      background:var(--okbg);
+      color:#065f46;
+      font-weight:800;
+      font-size:14px;
+      line-height:1.45;
+    }
+    .warn{
+      margin-top:12px;
+      padding:12px 14px;
+      border-radius:16px;
+      border:1px solid var(--warnbd);
+      background:var(--warnbg);
+      color:#7f1d1d;
+      font-weight:850;
+      font-size:14px;
+      line-height:1.45;
+      display:none;
+    }
+    .warn.show{display:block}
+
+    .btnrow{display:flex;gap:10px;flex-wrap:wrap;margin-top:14px}
+    .btn{
+      cursor:pointer;
+      border:none;
+      padding:12px 14px;
+      border-radius:14px;
+      font-weight:950;
+      text-decoration:none;
+      display:inline-flex;align-items:center;justify-content:center;
+      background:linear-gradient(180deg, rgba(16,185,129,.95), rgba(16,185,129,.85));
+      color:#fff;
+      box-shadow: 0 14px 24px rgba(16,185,129,.22);
+    }
+    .btn.secondary{
+      background:linear-gradient(180deg, rgba(59,130,246,.95), rgba(59,130,246,.85));
+      box-shadow: 0 14px 24px rgba(59,130,246,.22);
+    }
+    .btn.light{
+      background:#fff;
+      color:var(--text);
+      border:1px solid var(--line);
+      box-shadow:none;
+      font-weight:900;
+    }
+    .btn:disabled{opacity:.55;cursor:not-allowed;box-shadow:none;filter:saturate(.8)}
+
+    .checkboxRow{
+      display:flex;
+      gap:10px;
+      align-items:flex-start;
+      margin-top:12px;
+      padding:12px 12px;
+      border-radius:16px;
+      border:1px solid var(--line);
+      background:#fff;
+    }
+    .checkboxRow input[type="checkbox"]{
+      width:20px;height:20px;
+      margin-top:2px;
+      accent-color: var(--accent);
+      flex:0 0 auto;
+    }
+    .checkboxRow span{
+      display:block;
+      font-weight:800;
+      font-size:13.5px;
+      line-height:1.4;
+      color:#0f172a;
+    }
+    .checkboxRow small{
+      display:block;
+      margin-top:6px;
+      color:var(--muted);
+      font-weight:700;
+      font-size:12.5px;
+      line-height:1.45;
+    }
+
+    /* NEW: Gäste-Box (Erwachsene/Kinder) */
+    .guestBox{
+      margin-top:12px;
+      border:1px solid var(--line);
+      border-radius:16px;
+      background:#fff;
+      padding:12px;
+    }
+    .guestBox h3{
+      margin:0 0 10px 0;
+      font-size:14px;
+      letter-spacing:-.01em;
+    }
+    .guestGrid{
+      display:grid;
+      grid-template-columns: 1fr 1fr;
+      gap:12px;
+      align-items:start;
+    }
+    @media (max-width: 820px){ .guestGrid{grid-template-columns:1fr} }
+
+    .childAges{
+      margin-top:10px;
+      display:grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap:10px;
+    }
+    @media (max-width: 820px){ .childAges{grid-template-columns: repeat(2, minmax(0, 1fr));} }
+    @media (max-width: 520px){ .childAges{grid-template-columns: 1fr;} }
+
+    .ageItem label{
+      margin:0 0 6px 0;
+      font-size:12px;
+    }
+    .ageItem input{
+      padding:10px 10px;
+      border-radius:12px;
+    }
+
+    .miniNote{
+      margin-top:10px;
+      color:var(--muted);
+      font-size:12.5px;
+      line-height:1.45;
+      font-weight:700;
+    }
+    .chipLine{
+      margin-top:10px;
+      display:flex;
+      flex-wrap:wrap;
+      gap:8px;
+    }
+    .chip{
+      font-size:12px;
+      font-weight:900;
+      padding:7px 10px;
+      border-radius:999px;
+      border:1px solid var(--line);
+      background:#f8fafc;
+      color:var(--muted);
+    }
+    .chip.ok{
+      border-color: var(--okbd);
+      background: var(--okbg);
+      color:#065f46;
+    }
+
+    .amenities{
+      display:grid;
+      grid-template-columns: repeat(2, minmax(0,1fr));
+      gap:10px;
+      margin-top:10px;
+    }
+    @media (max-width: 820px){ .amenities{grid-template-columns:1fr} }
+    .amenity{
+      background:#f8fafc;
+      border:1px solid #eaecf0;
+      padding:12px 12px;
+      border-radius:14px;
+      font-weight:800;
+    }
+
+    .mapbox{
+      margin-top:10px;
+      border-radius:20px;
+      overflow:hidden;
+      border:1px solid var(--line);
+      background:#fff;
+    }
+    iframe.map{width:100%;height:360px;border:0;display:block}
+
+    .sectionHead{
+      display:flex;align-items:flex-end;justify-content:space-between;
+      gap:12px;flex-wrap:wrap;
+      margin-top:14px;
+    }
+
+    .gallery{
+      margin-top:12px;
+      display:grid;
+      grid-template-columns: repeat(3, minmax(0,1fr));
+      gap:12px;
+    }
+    @media (max-width: 980px){ .gallery{grid-template-columns: repeat(2, minmax(0,1fr));} }
+    @media (max-width: 520px){ .gallery{grid-template-columns: 1fr;} }
+    .tile{
+      border:1px solid var(--line);
+      border-radius:18px;
+      overflow:hidden;
+      background:#fff;
+      box-shadow:var(--shadow);
+      cursor:pointer;
+    }
+    .tile .imgwrap{height:190px;background:#0b1220}
+    .tile img{width:100%;height:100%;object-fit:cover;display:block}
+    .cap{
+      padding:12px;
+      display:flex;align-items:center;justify-content:space-between;gap:10px;
+      font-weight:950;
+    }
+    .status{
+      padding:6px 10px;border-radius:999px;
+      border:1px solid var(--line);
+      background:#f8fafc;
+      color:var(--muted);
+      font-size:12px;font-weight:950;white-space:nowrap;
+    }
+    .status.ok{background:var(--okbg);border-color:var(--okbd);color:#065f46}
+
+    .lb{
+      position:fixed;inset:0;
+      display:none;
+      align-items:center;justify-content:center;
+      background:rgba(15,23,42,.78);
+      padding:18px;
+      z-index:9999;
+    }
+    .lb.show{display:flex}
+    .lbInner{
+      width:min(1100px, 96vw);
+      background:#000;
+      border-radius:22px;
+      overflow:hidden;
+      border:1px solid rgba(255,255,255,.16);
+      box-shadow:0 30px 90px rgba(0,0,0,.55);
+      position:relative;
+    }
+    .lbTop{
+      position:absolute;left:0;right:0;top:0;
+      display:flex;align-items:center;justify-content:space-between;gap:10px;
+      padding:12px 12px;
+      background:linear-gradient(180deg, rgba(0,0,0,.65), rgba(0,0,0,0));
+      color:#fff;
+    }
+    .lbTitle{font-weight:950}
+    .lbClose{
+      width:44px;height:44px;border-radius:999px;
+      border:1px solid rgba(255,255,255,.18);
+      background:rgba(255,255,255,.12);
+      color:#fff;
+      cursor:pointer;font-size:18px;font-weight:950;
+      display:flex;align-items:center;justify-content:center;
+      backdrop-filter: blur(10px);
+    }
+    .lbImg{
+      width:100%;
+      max-height:85vh;
+      object-fit:contain;
+      display:block;
+      background:#000;
+    }
+
+    footer{margin-top:18px;color:var(--muted);font-size:12px;text-align:center;line-height:1.5}
+    code{background:#fff;border:1px solid var(--line);padding:2px 6px;border-radius:10px}
+  </style>
+</head>
+
+<body>
+  <div class="wrap">
+
+    <header class="top">
+      <div class="brand">
+        <div class="logo" aria-hidden="true"></div>
+        <div>
+          <b id="t_brand">Bungalow Freiriz (Vila Verde)</b>
+          <small id="t_brand_sub">Pool • Garten • bis 6 Personen</small>
+        </div>
+      </div>
+
+      <nav>
+        <a class="pill" href="#reservierung" id="t_nav_price">Kalender & Preis</a>
+        <a class="pill" href="#ausstattung" id="t_nav_amen">Ausstattung</a>
+        <a class="pill" href="#umgebung" id="t_nav_area">Umgebung</a>
+        <a class="pill" href="#lage" id="t_nav_map">Maps</a>
+        <a class="pill" href="#bilder" id="t_nav_photos">Bilder</a>
+
+        <div class="flags" aria-label="Sprache">
+          <div class="flag active" id="flag-de" title="Deutsch" onclick="setLang('de')">🇩🇪</div>
+          <div class="flag" id="flag-en" title="English" onclick="setLang('en')">🇬🇧</div>
+          <div class="flag" id="flag-fr" title="Français" onclick="setLang('fr')">🇫🇷</div>
+          <div class="flag" id="flag-pt" title="Português" onclick="setLang('pt')">🇵🇹</div>
+        </div>
+      </nav>
+    </header>
+
+    <!-- HERO -->
+    <section class="hero">
+      <img id="heroImg" src="images/bungalow.png" alt="Bungalow">
+      <div class="overlay"></div>
+      <div class="content">
+        <h1 id="t_title">Bungalow mit Pool</h1>
+        <p id="t_subtitle">Rua 1 do Monte nr 17, 4730-172 Freiriz (Vila Verde) – modern, ruhig & einladend.</p>
+        <div class="badges">
+          <span class="badge" id="t_badge1">Saisonpreise • pro Nacht</span>
+          <span class="badge" id="t_badge2">+15 € / Nacht je Zusatzperson</span>
+          <span class="badge" id="t_badge3">Reinigung inklusive</span>
+          <span class="badge" id="t_badge4">Haustiere erlaubt</span>
+          <span class="badge" id="t_badge5">Check-in ab 10:00 • Check-out bis 12:00</span>
+        </div>
+      </div>
+    </section>
+
+    <div class="grid">
+
+      <!-- Kalender & Preis -->
+      <section class="card" id="reservierung">
+        <h2 id="t_price_title">Kalender / Reservierung & Preis</h2>
+        <p class="muted" id="t_price_sub">Wähle Check-in und Check-out – der Gesamtpreis wird automatisch berechnet.</p>
+
+        <div class="hint" id="blockedInfo"></div>
+
+        <div class="grid2">
+          <div>
+            <label for="checkin" id="t_checkin">Check-in (ab 10:00 Uhr)</label>
+            <input type="date" id="checkin">
+          </div>
+          <div>
+            <label for="checkout" id="t_checkout">Check-out (bis 12:00 Uhr)</label>
+            <input type="date" id="checkout">
+          </div>
+        </div>
+
+        <!-- NEW: Erwachsene / Kinder -->
+        <div class="guestBox">
+          <h3 id="t_guest_title">Gäste</h3>
+
+          <div class="guestGrid">
+            <div>
+              <label for="adults" id="t_adults">Erwachsene</label>
+              <select id="adults">
+                <option value="1">1</option><option value="2" selected>2</option><option value="3">3</option>
+                <option value="4">4</option><option value="5">5</option><option value="6">6</option>
+              </select>
+            </div>
+
+            <div>
+              <label for="childrenCount" id="t_children">Kinder</label>
+              <select id="childrenCount">
+                <option value="0" selected>0</option><option value="1">1</option><option value="2">2</option>
+                <option value="3">3</option><option value="4">4</option>
+              </select>
+            </div>
+          </div>
+
+          <div id="childAgesWrap" style="display:none;">
+            <div class="miniNote" id="t_children_ages_note">
+              Bitte Alter je Kind eintragen. Kinder unter 16 zählen nicht als Erwachsene. Ab 16 gilt als Erwachsener.
+            </div>
+            <div class="childAges" id="childAges"></div>
+          </div>
+
+          <div class="chipLine">
+            <div class="chip" id="chipTotal">Gesamt: –</div>
+            <div class="chip" id="chipBillable">Preis-Personen: –</div>
+            <div class="chip ok" id="chipRule">U16 gratis (Preislogik)</div>
+          </div>
+        </div>
+
+        <div class="grid2" style="margin-top:12px;">
+          <div>
+            <label for="pets" id="t_pets">Haustier(e)</label>
+            <select id="pets">
+              <option value="Nein" id="t_no">Nein</option>
+              <option value="Ja" id="t_yes">Ja</option>
+            </select>
+          </div>
+          <div>
+            <label id="t_people_max">Maximal 6 Personen</label>
+            <input type="text" value="✔" disabled>
+          </div>
+        </div>
+
+        <div class="grid3" style="margin-top:12px;">
+          <div class="kpi">
+            <div class="k" id="t_nights">Nächte</div>
+            <div class="v" id="outNights">–</div>
+          </div>
+          <div class="kpi">
+            <div class="k" id="t_pernight">Ø Preis / Nacht</div>
+            <div class="v"><span id="outPerNight">–</span> €</div>
+          </div>
+          <div class="kpi">
+            <div class="k" id="t_total">Gesamtpreis</div>
+            <div class="v"><span id="outTotal">–</span> €</div>
+          </div>
+        </div>
+
+        <div class="hint" id="priceHint"></div>
+        <div class="warn" id="priceWarn"></div>
+
+        <!-- Pflicht-Checkbox -->
+        <div class="checkboxRow">
+          <input type="checkbox" id="termsChk">
+          <div>
+            <span id="t_terms_title">Buchungs- & Zahlungsbedingungen bestätigen (Pflicht)</span>
+            <small id="t_terms_text">
+              Nach deiner Buchungsanfrage und nach meiner Bestätigung werden 25% des Gesamtbetrags fällig. Der Restbetrag ist am Tag der Anreise bei Schlüsselübergabe zu bezahlen.
+              Stornierung kostenfrei bis 4 Wochen vor Anreise, danach werden 25% des Gesamtbetrags berechnet.
+            </small>
+          </div>
+        </div>
+        <div class="warn" id="termsWarn"></div>
+
+        <div class="btnrow">
+          <button class="btn" type="button" id="btnWhatsApp">Per WhatsApp anfragen</button>
+          <button class="btn secondary" type="button" id="btnEmail">Per E-Mail anfragen</button>
+          <button class="btn light" type="button" id="btnReset">Zurücksetzen</button>
+        </div>
+
+        <div style="margin-top:10px" class="muted" id="t_contact_line">
+          WhatsApp: <b>+49 1516 2830551</b> · E-Mail: <b>dannypinto83@yahoo.de</b>
+        </div>
+      </section>
+
+      <!-- Ausstattung + Umgebung + Maps -->
+      <aside class="card">
+        <h2 id="ausstattung">Ausstattung</h2>
+        <p class="muted" id="t_amen_sub">Alles was man braucht – komfortabel & praktisch.</p>
+
+        <div class="amenities" id="amenitiesList"></div>
+
+        <h2 id="umgebung" style="margin-top:16px;">Umgebung</h2>
+        <p class="muted" id="t_area_intro"></p>
+        <div id="areaList" style="margin-top:10px;"></div>
+
+        <h2 id="lage" style="margin-top:16px;">Maps / Lage</h2>
+        <p class="muted" id="t_address">
+          Rua 1 do Monte nr 17, 4730-172 Freiriz
+        </p>
+
+        <div class="mapbox">
+          <iframe
+            class="map"
+            loading="lazy"
+            referrerpolicy="no-referrer-when-downgrade"
+            src="https://www.google.com/maps?q=Rua%201%20do%20Monte%20nr%2017%2C%204730-172%20Freiriz&output=embed">
+          </iframe>
+        </div>
+
+        <div class="btnrow" style="margin-top:12px;">
+          <a class="btn light" target="_blank" rel="noopener"
+             href="https://www.google.com/maps?q=Rua%201%20do%20Monte%20nr%2017%2C%204730-172%20Freiriz">
+            <span id="t_open_maps">In Google Maps öffnen</span>
+          </a>
+        </div>
+      </aside>
+    </div>
+
+    <!-- Galerie -->
+    <section class="card" id="bilder" style="margin-top:14px;">
+      <div class="sectionHead">
+        <div>
+          <h2 style="margin:0 0 6px 0;" id="t_photos_title">Bilder</h2>
+          <p class="muted" id="t_photos_sub">Klick auf ein Bild, um es groß anzusehen.</p>
+        </div>
+        <div class="btnrow" style="margin-top:0;">
+          <button class="btn light" type="button" id="reloadBtn"><span id="t_reload">Bilder neu laden</span></button>
+        </div>
+      </div>
+
+      <div class="warn" id="imgWarn"></div>
+      <div class="gallery" id="gallery"></div>
+
+      <p class="muted" style="margin-top:12px;" id="t_folder_hint">
+        Ordnerstruktur: <code>index.html</code> neben <code>images/</code> (nicht im images-Ordner).
+      </p>
+    </section>
+
+    <footer>
+      © <span id="year"></span> · UTF-8 aktiv
+    </footer>
+  </div>
+
+  <!-- Lightbox -->
+  <div class="lb" id="lb" aria-hidden="true">
+    <div class="lbInner">
+      <div class="lbTop">
+        <div class="lbTitle" id="lbTitle">Bild</div>
+        <button class="lbClose" id="lbClose" type="button">✕</button>
+      </div>
+      <img class="lbImg" id="lbImg" alt="Großansicht">
+    </div>
+  </div>
+
+  <script>
+    // ========= KONFIG =========
+    const EMAIL_TO = "dannypinto83@yahoo.de";
+    const WHATSAPP_NUMBER = "4915162830551"; // ohne + für wa.me
+
+    // Zusatzpersonen bleiben:
+    const INCLUDED_PERSONS = 4;
+    const EXTRA_PERSON_PER_NIGHT = 15;
+    const MAX_PERSONS = 6;
+
+    // Saisonpreise (Basis bis 4 Personen)
+    const SEASON_PRICES = [
+      { months: [3,4,5], price: 90 },
+      { months: [6,7,8], price: 120 },
+      { months: [9,10,11], price: 90 }
+    ];
+    const CLOSED_MONTHS = [12,1,2];
+
+    // Reservierte Zeiträume (from inkl., to exkl.)
+    const BLOCKED_DATES = [
+      { from: "2026-07-13", to: "2026-07-24" }
+    ];
+
+    // Bilder
+    const imageKeys = [
+      "arbeitsbereich","bad1","bad2","bungalow","flur-AC",
+      "garten-ansicht","garten-nachts","kueche","luftaufnahme",
+      "pool-abend","pool-tag","schlafzimmer-1","schlafzimmer-2",
+      "wohnzimmer","wohnzimmer-tisch"
+    ];
+    const EXT_TRY = ["png","jpg","jpeg","webp"];
+    const IMG_DIR = "images/";
+
+    const $ = (id) => document.getElementById(id);
+
+    // ========= I18N =========
+    const T = {
+      de:{
+        brand:"Bungalow Freiriz (Vila Verde)",
+        brandSub:"Pool • Garten • bis 6 Personen",
+        nav:{price:"Kalender & Preis", amen:"Ausstattung", area:"Umgebung", map:"Maps", photos:"Bilder"},
+        title:"Bungalow mit Pool",
+        subtitle:"Rua 1 do Monte nr 17, 4730-172 Freiriz (Vila Verde) – modern, ruhig & einladend.",
+        badges:[
+          "Saisonpreise • pro Nacht",
+          `+${EXTRA_PERSON_PER_NIGHT} € / Nacht je Zusatzperson`,
+          "Reinigung inklusive",
+          "Haustiere erlaubt",
+          "Check-in ab 10:00 • Check-out bis 12:00"
+        ],
+        priceTitle:"Kalender / Reservierung & Preis",
+        priceSub:"Wähle Check-in und Check-out – der Gesamtpreis wird automatisch berechnet.",
+        blockedPrefix:"Bereits reserviert:",
+        checkin:"Check-in (ab 10:00 Uhr)",
+        checkout:"Check-out (bis 12:00 Uhr)",
+        pets:"Haustier(e)",
+        yes:"Ja",
+        no:"Nein",
+        nights:"Nächte",
+        perNight:"Ø Preis / Nacht",
+        total:"Gesamtpreis",
+        askWA:"Per WhatsApp anfragen",
+        askEmail:"Per E-Mail anfragen",
+        reset:"Zurücksetzen",
+        openMaps:"In Google Maps öffnen",
+        amenSub:"Alles was man braucht – komfortabel & praktisch.",
+        amenities:[
+          "✅ Küche komplett eingerichtet","✅ Waschmaschine","✅ Föhn","✅ Mikrowelle","✅ Herd",
+          "✅ Wäscheständer","✅ WLAN","✅ Privater Stellplatz auf dem Grundstück","✅ Klimaanlage","✅ TV",
+          "✅ Wasserkocher","✅ Toaster","✅ Kinderbett zustellbar"
+        ],
+        areaIntro:"Kurze Wege zu Stadt, Natur und Meer:",
+        areaItems:[
+          "✈️ Porto Flughafen: ca. 35–45 Min (je nach Verkehr).",
+          "🥐 Bäckerei & 🛒 Einkaufen: in Vila Verde/Braga schnell erreichbar.",
+          "🏛️ Braga Highlights: Sé de Braga (Zentrum), Bom Jesus do Monte (~8 km ab Braga), Sameiro (~7 km ab Braga).",
+          "🌿 Nationalpark Peneda-Gerês: ca. 30–35 Min ab Vila Verde (Wasserfälle in der Region).",
+          "🏖️ Strände: Apúlia (~34 km ab Braga), Ofir (~37 km ab Braga), Esposende (~38 km ab Braga)."
+        ],
+        photosTitle:"Bilder",
+        photosSub:"Klick auf ein Bild, um es groß anzusehen.",
+        reload:"Bilder neu laden",
+        folderHint:"Ordnerstruktur: index.html neben images/ (nicht im images-Ordner).",
+        seasonHint:
+          "Saisonpreise (Basis bis 4 Erwachsene/Preis-Personen): <b>März–Mai 90 €</b> · <b>Juni–August 120 €</b> · <b>September–November 90 €</b> · <b>Dezember–Februar nicht buchbar</b>.<br>Zusatzperson: <b>+15 € / Nacht</b> · Reinigung inklusive.",
+        warnBadRange:"Bitte wähle ein Check-out Datum nach dem Check-in.",
+        warnClosed:"Die Monate <b>Dezember, Januar und Februar</b> sind <b>nicht buchbar</b>. Bitte wähle andere Daten.",
+        warnBlocked:(from,to)=>`Dieser Zeitraum ist <b>nicht verfügbar</b> (reserviert: <b>${from}</b> bis <b>${to}</b>). Bitte wähle andere Daten.`,
+        warnMax:"Maximal sind <b>6 Personen</b> erlaubt (Erwachsene + Kinder zusammen).",
+        guestTitle:"Gäste",
+        adults:"Erwachsene",
+        children:"Kinder",
+        childrenNote:"Bitte Alter je Kind eintragen. Kinder unter 16 zählen nicht als Erwachsene. Ab 16 gilt als Erwachsener.",
+        chipTotal:(n)=>`Gesamt: ${n}`,
+        chipBillable:(n)=>`Preis-Personen: ${n}`,
+        termsTitle:"Buchungs- & Zahlungsbedingungen bestätigen (Pflicht)",
+        termsText:"Nach deiner Buchungsanfrage und nach meiner Bestätigung werden 25% des Gesamtbetrags fällig. Der Restbetrag ist am Tag der Anreise bei Schlüsselübergabe zu bezahlen. Stornierung kostenfrei bis 4 Wochen vor Anreise, danach werden 25% des Gesamtbetrags berechnet.",
+        termsWarn:"Bitte bestätige die Buchungs- & Zahlungsbedingungen, um die Anfrage zu senden.",
+        imgMissing:(list)=>`Einige Bilder wurden nicht gefunden: ${list.map(x=>`<code>${x}</code>`).join(" ")}`
+      },
+
+      en:{
+        brand:"Bungalow Freiriz (Vila Verde)",
+        brandSub:"Pool • Garden • up to 6 guests",
+        nav:{price:"Calendar & Price", amen:"Amenities", area:"Area", map:"Maps", photos:"Photos"},
+        title:"Bungalow with Pool",
+        subtitle:"Rua 1 do Monte nr 17, 4730-172 Freiriz (Vila Verde) – modern, quiet & welcoming.",
+        badges:[
+          "Seasonal prices • per night",
+          `+${EXTRA_PERSON_PER_NIGHT} € / night per extra guest`,
+          "Cleaning included",
+          "Pets allowed",
+          "Check-in from 10:00 • Check-out until 12:00"
+        ],
+        priceTitle:"Calendar / Request & Price",
+        priceSub:"Select check-in and check-out – the total price is calculated automatically.",
+        blockedPrefix:"Already booked:",
+        checkin:"Check-in (from 10:00)",
+        checkout:"Check-out (until 12:00)",
+        pets:"Pets",
+        yes:"Yes",
+        no:"No",
+        nights:"Nights",
+        perNight:"Avg. price / night",
+        total:"Total price",
+        askWA:"Request via WhatsApp",
+        askEmail:"Request via Email",
+        reset:"Reset",
+        openMaps:"Open in Google Maps",
+        amenSub:"Everything you need – comfortable & practical.",
+        amenities:[
+          "✅ Fully equipped kitchen","✅ Washing machine","✅ Hair dryer","✅ Microwave","✅ Stove",
+          "✅ Drying rack","✅ Wi-Fi","✅ Private parking on the property","✅ Air conditioning","✅ TV",
+          "✅ Kettle","✅ Toaster","✅ Baby cot available"
+        ],
+        areaIntro:"Great access to city, nature and the coast:",
+        areaItems:[
+          "✈️ Porto Airport: approx. 35–45 min (traffic dependent).",
+          "🥐 Bakery & 🛒 groceries: easily reachable in Vila Verde/Braga.",
+          "🏛️ Braga highlights: Cathedral (city center), Bom Jesus do Monte (~8 km from Braga), Sameiro (~7 km from Braga).",
+          "🌿 Peneda-Gerês National Park: about 30–35 min from Vila Verde (waterfalls in the region).",
+          "🏖️ Beaches: Apúlia (~34 km from Braga), Ofir (~37 km from Braga), Esposende (~38 km from Braga)."
+        ],
+        photosTitle:"Photos",
+        photosSub:"Click an image to view it larger.",
+        reload:"Reload photos",
+        folderHint:"Folder structure: index.html next to images/ (not inside images/).",
+        seasonHint:
+          "Seasonal prices (base up to 4 billable guests): <b>Mar–May 90 €</b> · <b>Jun–Aug 120 €</b> · <b>Sep–Nov 90 €</b> · <b>Dec–Feb not bookable</b>.<br>Extra guest: <b>+15 € / night</b> · Cleaning included.",
+        warnBadRange:"Please choose a check-out date after check-in.",
+        warnClosed:"The months <b>December, January and February</b> are <b>not bookable</b>. Please choose other dates.",
+        warnBlocked:(from,to)=>`This period is <b>not available</b> (booked: <b>${from}</b> to <b>${to}</b>). Please choose different dates.`,
+        warnMax:"Maximum <b>6 people</b> allowed (adults + children total).",
+        guestTitle:"Guests",
+        adults:"Adults",
+        children:"Children",
+        childrenNote:"Please enter each child’s age. Children under 16 do not count as adults. From 16 they count as an adult.",
+        chipTotal:(n)=>`Total: ${n}`,
+        chipBillable:(n)=>`Billable guests: ${n}`,
+        termsTitle:"Confirm booking & payment terms (required)",
+        termsText:"After your booking request and my confirmation, 25% of the total amount is due. The remaining balance is payable on the day of arrival at key handover. Free cancellation up to 4 weeks before arrival; afterwards 25% of the total amount will be charged.",
+        termsWarn:"Please confirm the booking & payment terms before sending the request.",
+        imgMissing:(list)=>`Some photos were not found: ${list.map(x=>`<code>${x}</code>`).join(" ")}`
+      },
+
+      fr:{
+        brand:"Bungalow Freiriz (Vila Verde)",
+        brandSub:"Piscine • Jardin • jusqu’à 6 personnes",
+        nav:{price:"Calendrier & Prix", amen:"Équipements", area:"Environs", map:"Maps", photos:"Photos"},
+        title:"Bungalow avec piscine",
+        subtitle:"Rua 1 do Monte nr 17, 4730-172 Freiriz (Vila Verde) – moderne, calme et accueillant.",
+        badges:[
+          "Tarifs saisonniers • par nuit",
+          `+${EXTRA_PERSON_PER_NIGHT} € / nuit par personne supplémentaire`,
+          "Ménage inclus",
+          "Animaux acceptés",
+          "Arrivée dès 10:00 • Départ jusqu’à 12:00"
+        ],
+        priceTitle:"Calendrier / Demande & Prix",
+        priceSub:"Choisissez arrivée et départ – le prix total est calculé automatiquement.",
+        blockedPrefix:"Déjà réservé :",
+        checkin:"Arrivée (dès 10:00)",
+        checkout:"Départ (jusqu’à 12:00)",
+        pets:"Animaux",
+        yes:"Oui",
+        no:"Non",
+        nights:"Nuits",
+        perNight:"Prix moyen / nuit",
+        total:"Prix total",
+        askWA:"Demande via WhatsApp",
+        askEmail:"Demande par e-mail",
+        reset:"Réinitialiser",
+        openMaps:"Ouvrir dans Google Maps",
+        amenSub:"Tout le nécessaire – confortable et pratique.",
+        amenities:[
+          "✅ Cuisine équipée","✅ Lave-linge","✅ Sèche-cheveux","✅ Micro-ondes","✅ Plaque de cuisson",
+          "✅ Étendoir","✅ Wi-Fi","✅ Parking privé sur place","✅ Climatisation","✅ TV",
+          "✅ Bouilloire","✅ Grille-pain","✅ Lit bébé disponible"
+        ],
+        areaIntro:"Accès rapide à la ville, à la nature et à la mer :",
+        areaItems:[
+          "✈️ Aéroport de Porto : env. 35–45 min (selon la circulation).",
+          "🥐 Boulangerie & 🛒 courses : facilement accessibles à Vila Verde/Braga.",
+          "🏛️ Braga : Cathédrale (centre), Bom Jesus do Monte (~8 km depuis Braga), Sameiro (~7 km depuis Braga).",
+          "🌿 Parc national Peneda-Gerês : env. 30–35 min depuis Vila Verde (cascades dans la région).",
+          "🏖️ Plages : Apúlia (~34 km depuis Braga), Ofir (~37 km depuis Braga), Esposende (~38 km depuis Braga)."
+        ],
+        photosTitle:"Photos",
+        photosSub:"Cliquez sur une image pour l’agrandir.",
+        reload:"Recharger les photos",
+        folderHint:"Structure : index.html à côté de images/ (pas dans images/).",
+        seasonHint:
+          "Tarifs saisonniers (base jusqu’à 4 personnes facturées) : <b>mars–mai 90 €</b> · <b>juin–août 120 €</b> · <b>sept.–nov. 90 €</b> · <b>déc.–févr. non disponible</b>.<br>Personne supplémentaire : <b>+15 € / nuit</b> · Ménage inclus.",
+        warnBadRange:"Veuillez choisir une date de départ après la date d’arrivée.",
+        warnClosed:"Les mois <b>décembre, janvier et février</b> ne sont <b>pas disponibles</b>. Veuillez choisir d’autres dates.",
+        warnBlocked:(from,to)=>`Cette période est <b>indisponible</b> (réservé : <b>${from}</b> au <b>${to}</b>). Veuillez choisir d’autres dates.`,
+        warnMax:"Maximum <b>6 personnes</b> (adultes + enfants au total).",
+        guestTitle:"Voyageurs",
+        adults:"Adultes",
+        children:"Enfants",
+        childrenNote:"Veuillez indiquer l’âge de chaque enfant. Les enfants de moins de 16 ans ne comptent pas comme adultes. À partir de 16 ans, ils comptent comme adulte.",
+        chipTotal:(n)=>`Total : ${n}`,
+        chipBillable:(n)=>`Personnes facturées : ${n}`,
+        termsTitle:"Confirmer les conditions (obligatoire)",
+        termsText:"Après votre demande de réservation et ma confirmation, 25% du montant total est dû. Le solde est payable le jour de l’arrivée lors de la remise des clés. Annulation gratuite jusqu’à 4 semaines avant l’arrivée ; ensuite 25% du montant total est facturé.",
+        termsWarn:"Veuillez confirmer les conditions avant d’envoyer la demande.",
+        imgMissing:(list)=>`Certaines photos sont introuvables : ${list.map(x=>`<code>${x}</code>`).join(" ")}`
+      },
+
+      pt:{
+        brand:"Bungalow Freiriz (Vila Verde)",
+        brandSub:"Piscina • Jardim • até 6 pessoas",
+        nav:{price:"Calendário & Preço", amen:"Comodidades", area:"Zona", map:"Maps", photos:"Fotos"},
+        title:"Bungalow com piscina",
+        subtitle:"Rua 1 do Monte nr 17, 4730-172 Freiriz (Vila Verde) – moderno, tranquilo e acolhedor.",
+        badges:[
+          "Preços sazonais • por noite",
+          `+${EXTRA_PERSON_PER_NIGHT} € / noite por pessoa extra`,
+          "Limpeza incluída",
+          "Animais permitidos",
+          "Check-in a partir das 10:00 • Check-out até às 12:00"
+        ],
+        priceTitle:"Calendário / Pedido & Preço",
+        priceSub:"Escolha check-in e check-out – o preço total é calculado automaticamente.",
+        blockedPrefix:"Já reservado:",
+        checkin:"Check-in (a partir das 10:00)",
+        checkout:"Check-out (até às 12:00)",
+        pets:"Animais",
+        yes:"Sim",
+        no:"Não",
+        nights:"Noites",
+        perNight:"Preço médio / noite",
+        total:"Preço total",
+        askWA:"Pedir via WhatsApp",
+        askEmail:"Pedir por e-mail",
+        reset:"Repor",
+        openMaps:"Abrir no Google Maps",
+        amenSub:"Tudo o que precisa – confortável e prático.",
+        amenities:[
+          "✅ Cozinha equipada","✅ Máquina de lavar","✅ Secador de cabelo","✅ Micro-ondas","✅ Fogão/placa",
+          "✅ Estendal","✅ Wi-Fi","✅ Estacionamento privado na propriedade","✅ Ar condicionado","✅ TV",
+          "✅ Chaleira","✅ Torradeira","✅ Berço disponível"
+        ],
+        areaIntro:"Boa localização para cidade, natureza e praia:",
+        areaItems:[
+          "✈️ Aeroporto do Porto: aprox. 35–45 min (dependendo do trânsito).",
+          "🥐 Padaria & 🛒 compras: fácil acesso em Vila Verde/Braga.",
+          "🏛️ Braga: Sé (centro), Bom Jesus do Monte (~8 km desde Braga), Sameiro (~7 km desde Braga).",
+          "🌿 Parque Nacional Peneda-Gerês: cerca de 30–35 min desde Vila Verde (cascatas na região).",
+          "🏖️ Praias: Apúlia (~34 km desde Braga), Ofir (~37 km desde Braga), Esposende (~38 km desde Braga)."
+        ],
+        photosTitle:"Fotos",
+        photosSub:"Clique numa imagem para ver maior.",
+        reload:"Recarregar fotos",
+        folderHint:"Estrutura: index.html ao lado de images/ (não dentro de images/).",
+        seasonHint:
+          "Preços sazonais (base até 4 pessoas faturadas): <b>mar–mai 90 €</b> · <b>jun–ago 120 €</b> · <b>set–nov 90 €</b> · <b>dez–fev não disponível</b>.<br>Pessoa extra: <b>+15 € / noite</b> · Limpeza incluída.",
+        warnBadRange:"Por favor escolha uma data de check-out após o check-in.",
+        warnClosed:"Os meses <b>dezembro, janeiro e fevereiro</b> <b>não estão disponíveis</b>. Por favor escolha outras datas.",
+        warnBlocked:(from,to)=>`Este período está <b>indisponível</b> (reservado: <b>${from}</b> a <b>${to}</b>). Por favor escolha outras datas.`,
+        warnMax:"Máximo <b>6 pessoas</b> (adultos + crianças no total).",
+        guestTitle:"Hóspedes",
+        adults:"Adultos",
+        children:"Crianças",
+        childrenNote:"Indique a idade de cada criança. Crianças com menos de 16 anos não contam como adultos. A partir de 16 contam como adulto.",
+        chipTotal:(n)=>`Total: ${n}`,
+        chipBillable:(n)=>`Pessoas faturadas: ${n}`,
+        termsTitle:"Confirmar condições (obrigatório)",
+        termsText:"Após o seu pedido de reserva e a minha confirmação, 25% do valor total é devido. O restante é pago no dia da chegada na entrega das chaves. Cancelamento gratuito até 4 semanas antes da chegada; depois será cobrado 25% do valor total.",
+        termsWarn:"Por favor confirme as condições antes de enviar o pedido.",
+        imgMissing:(list)=>`Algumas fotos não foram encontradas: ${list.map(x=>`<code>${x}</code>`).join(" ")}`
+      }
+    };
+
+    let currentLang = "de";
+    let dateSelectionOk = false;
+
+    // ========= HELPERS =========
+    function setActiveFlag(lang){
+      ["de","en","fr","pt"].forEach(l=>{
+        const el = document.getElementById("flag-"+l);
+        if (el) el.classList.toggle("active", l===lang);
+      });
+    }
+
+    function toDateMidday(iso){
+      const d = new Date(iso);
+      d.setHours(12,0,0,0);
+      return d;
+    }
+
+    function daysBetween(d1, d2){
+      const a = toDateMidday(d1);
+      const b = toDateMidday(d2);
+      const ms = 24*60*60*1000;
+      return Math.round((b-a)/ms);
+    }
+
+    function eurNumber(n){
+      return (Math.round(n*100)/100).toLocaleString("de-DE", { minimumFractionDigits: 0, maximumFractionDigits: 2 });
+    }
+
+    function formatDateLocal(iso){
+      const d = new Date(iso+"T12:00:00");
+      return d.toLocaleDateString(undefined, { year:"numeric", month:"2-digit", day:"2-digit" });
+    }
+
+    function showWarn(el, html){
+      el.innerHTML = html;
+      el.classList.add("show");
+    }
+    function hideWarn(el){
+      el.innerHTML = "";
+      el.classList.remove("show");
+    }
+
+    function rangesOverlap(startA, endA, startB, endB){
+      return startA < endB && startB < endA;
+    }
+
+    function isBlockedRange(checkinISO, checkoutISO){
+      if (!checkinISO || !checkoutISO) return { blocked:false, hit:null };
+      const aStart = toDateMidday(checkinISO);
+      const aEnd = toDateMidday(checkoutISO);
+      for (const r of BLOCKED_DATES){
+        const bStart = toDateMidday(r.from);
+        const bEnd = toDateMidday(r.to);
+        if (rangesOverlap(aStart, aEnd, bStart, bEnd)) return { blocked:true, hit:r };
+      }
+      return { blocked:false, hit:null };
+    }
+
+    function applyDateConstraints(){
+      const ci = $("checkin").value;
+      const co = $("checkout").value;
+
+      if (ci){
+        const d = new Date(ci);
+        d.setDate(d.getDate()+1);
+        $("checkout").min = d.toISOString().slice(0,10);
+      } else $("checkout").min = "";
+
+      if (co){
+        const d = new Date(co);
+        d.setDate(d.getDate()-1);
+        $("checkin").max = d.toISOString().slice(0,10);
+      } else $("checkin").max = "";
+    }
+
+    // ======== SAISONLOGIK ========
+    function basePriceForDate(dateObj){
+      const m = dateObj.getMonth() + 1; // 1..12
+      if (CLOSED_MONTHS.includes(m)) return null;
+      for (const s of SEASON_PRICES){
+        if (s.months.includes(m)) return s.price;
+      }
+      return null;
+    }
+
+    function rangeContainsClosedMonths(checkinISO, checkoutISO){
+      if (!checkinISO || !checkoutISO) return false;
+      const start = toDateMidday(checkinISO);
+      const end = toDateMidday(checkoutISO);
+      const d = new Date(start);
+      while (d < end){
+        const m = d.getMonth()+1;
+        if (CLOSED_MONTHS.includes(m)) return true;
+        d.setDate(d.getDate()+1);
+        d.setHours(12,0,0,0);
+      }
+      return false;
+    }
+
+    // ======== GÄSTELOGIK (NEU) ========
+    function renderChildAgeInputs(){
+      const count = parseInt($("childrenCount").value, 10);
+      const wrap = $("childAgesWrap");
+      const container = $("childAges");
+
+      if (count <= 0){
+        wrap.style.display = "none";
+        container.innerHTML = "";
+        updateGuestChips();
+        return;
+      }
+
+      wrap.style.display = "block";
+      container.innerHTML = "";
+
+      for (let i=1;i<=count;i++){
+        const div = document.createElement("div");
+        div.className = "ageItem";
+
+        const lab = document.createElement("label");
+        lab.textContent = (currentLang==="de" ? `Kind ${i} – Alter` :
+                          currentLang==="fr" ? `Enfant ${i} – âge` :
+                          currentLang==="pt" ? `Criança ${i} – idade` :
+                          `Child ${i} – age`);
+
+        const inp = document.createElement("input");
+        inp.type = "number";
+        inp.min = "0";
+        inp.max = "99";
+        inp.placeholder = "z.B. 5";
+        inp.value = "";
+        inp.addEventListener("input", () => { updatePrice(); });
+
+        div.appendChild(lab);
+        div.appendChild(inp);
+        container.appendChild(div);
+      }
+
+      updateGuestChips();
+    }
+
+    function getChildAges(){
+      const container = $("childAges");
+      const ages = [];
+      const inputs = container.querySelectorAll("input[type='number']");
+      inputs.forEach(inp=>{
+        const v = inp.value.trim();
+        if (v === "") ages.push(null);
+        else {
+          const n = Math.max(0, Math.min(99, parseInt(v,10)));
+          ages.push(Number.isFinite(n) ? n : null);
+        }
+      });
+      return ages;
+    }
+
+    // Billable persons = adults + children(>=16)
+    function computeBillablePersons(){
+      const adults = parseInt($("adults").value, 10);
+      const childCount = parseInt($("childrenCount").value, 10);
+      const ages = getChildAges();
+
+      let teenAdults = 0;
+      for (let i=0;i<childCount;i++){
+        const a = ages[i];
+        if (a != null && a >= 16) teenAdults += 1;
+      }
+      return { adults, childCount, ages, billable: adults + teenAdults, teenAdults };
+    }
+
+    function updateGuestChips(){
+      const t = T[currentLang];
+      const adults = parseInt($("adults").value, 10);
+      const childCount = parseInt($("childrenCount").value, 10);
+      const { billable } = computeBillablePersons();
+      const total = adults + childCount;
+
+      $("chipTotal").textContent = t.chipTotal(total);
+      $("chipBillable").textContent = t.chipBillable(billable);
+    }
+
+    function computeSeasonalTotal(checkinISO, checkoutISO, billablePersons){
+      const start = toDateMidday(checkinISO);
+      const end = toDateMidday(checkoutISO);
+      const extraPeople = Math.max(0, billablePersons - INCLUDED_PERSONS);
+
+      let nights = 0;
+      let total = 0;
+
+      const d = new Date(start);
+      while (d < end){
+        const base = basePriceForDate(d);
+        if (base == null) return { ok:false, nights:0, total:0, avg:0, extraPeople, reason:"closed" };
+        total += base + extraPeople * EXTRA_PERSON_PER_NIGHT;
+        nights += 1;
+        d.setDate(d.getDate()+1);
+        d.setHours(12,0,0,0);
+      }
+
+      return { ok:true, nights, total, avg: total / Math.max(1,nights), extraPeople, reason:"ok" };
+    }
+
+    // ======== TERMS GATE ========
+    function applyInquiryGate(){
+      const t = T[currentLang];
+      const checked = $("termsChk").checked === true;
+
+      const allowed = dateSelectionOk && checked;
+      $("btnWhatsApp").disabled = !allowed;
+      $("btnEmail").disabled = !allowed;
+
+      if (dateSelectionOk && !checked){
+        showWarn($("termsWarn"), t.termsWarn);
+      } else {
+        hideWarn($("termsWarn"));
+      }
+    }
+
+    function updateBlockedInfo(){
+      const t = T[currentLang];
+      const list = BLOCKED_DATES
+        .map(r => `<b>${formatDateLocal(r.from)}</b> – <b>${formatDateLocal(r.to)}</b>`)
+        .join(" · ");
+      $("blockedInfo").innerHTML = `${t.blockedPrefix} ${list}`;
+    }
+
+    function updatePrice(){
+      applyDateConstraints();
+      const t = T[currentLang];
+
+      const ci = $("checkin").value;
+      const co = $("checkout").value;
+
+      // compute persons with new logic
+      const { adults, childCount, ages, billable } = computeBillablePersons();
+      const totalPeople = adults + childCount;
+
+      updateGuestChips();
+
+      // Reset outputs
+      $("outNights").textContent = "–";
+      $("outPerNight").textContent = "–";
+      $("outTotal").textContent = "–";
+      $("priceHint").innerHTML = t.seasonHint;
+      hideWarn($("priceWarn"));
+      dateSelectionOk = false;
+
+      // max people rule
+      if (totalPeople > MAX_PERSONS){
+        showWarn($("priceWarn"), t.warnMax);
+        applyInquiryGate();
+        return;
+      }
+
+      if (!ci || !co){
+        applyInquiryGate();
+        return;
+      }
+
+      const nights = daysBetween(ci, co);
+      if (nights <= 0){
+        showWarn($("priceWarn"), t.warnBadRange);
+        applyInquiryGate();
+        return;
+      }
+
+      if (rangeContainsClosedMonths(ci, co)){
+        showWarn($("priceWarn"), t.warnClosed);
+        applyInquiryGate();
+        return;
+      }
+
+      const blocked = isBlockedRange(ci, co);
+      if (blocked.blocked){
+        showWarn($("priceWarn"), t.warnBlocked(formatDateLocal(blocked.hit.from), formatDateLocal(blocked.hit.to)));
+        $("outNights").textContent = String(nights);
+        applyInquiryGate();
+        return;
+      }
+
+      const res = computeSeasonalTotal(ci, co, billable);
+      if (!res.ok){
+        showWarn($("priceWarn"), t.warnClosed);
+        applyInquiryGate();
+        return;
+      }
+
+      $("outNights").textContent = String(res.nights);
+      $("outTotal").textContent = eurNumber(res.total);
+      $("outPerNight").textContent = eurNumber(res.avg);
+
+      // Hint + extra people note
+      if (res.extraPeople > 0){
+        $("priceHint").innerHTML = t.seasonHint + `<br><span style="opacity:.92">(${res.extraPeople} × ${EXTRA_PERSON_PER_NIGHT} € / Nacht zusätzlich)</span>`;
+      } else {
+        $("priceHint").innerHTML = t.seasonHint;
+      }
+
+      dateSelectionOk = true;
+      applyInquiryGate();
+    }
+
+    function buildInquiryText(){
+      const t = T[currentLang];
+      const ciVal = $("checkin").value;
+      const coVal = $("checkout").value;
+      const ci = ciVal ? formatDateLocal(ciVal) : "—";
+      const co = coVal ? formatDateLocal(coVal) : "—";
+      const pets = $("pets").value;
+
+      const { adults, childCount, ages, billable, teenAdults } = computeBillablePersons();
+      const totalPeople = adults + childCount;
+
+      let nights = 0, total = null, avg = null;
+
+      if (ciVal && coVal){
+        const res = computeSeasonalTotal(ciVal, coVal, billable);
+        if (res.ok){
+          nights = res.nights;
+          total = res.total;
+          avg = res.avg;
+        }
+      }
+
+      const header =
+        (currentLang==="de") ? "Anfrage – Bungalow Freiriz (Vila Verde)" :
+        (currentLang==="fr") ? "Demande – Bungalow Freiriz (Vila Verde)" :
+        (currentLang==="pt") ? "Pedido – Bungalow Freiriz (Vila Verde)" :
+        "Request – Bungalow Freiriz (Vila Verde)";
+
+      const childrenLine = (() => {
+        if (childCount <= 0) return (currentLang==="de" ? "Kinder: 0" :
+                                    currentLang==="fr" ? "Enfants : 0" :
+                                    currentLang==="pt" ? "Crianças: 0" :
+                                    "Children: 0");
+        const list = ages.map((a,i)=> (a==null ? `?` : String(a))).join(", ");
+        if (currentLang==="de") return `Kinder: ${childCount} (Alter: ${list})`;
+        if (currentLang==="fr") return `Enfants : ${childCount} (âges : ${list})`;
+        if (currentLang==="pt") return `Crianças: ${childCount} (idades: ${list})`;
+        return `Children: ${childCount} (ages: ${list})`;
+      })();
+
+      const billLine = (() => {
+        if (currentLang==="de") return `Preis-Personen (Erwachsene + Kinder ab 16): ${billable}`;
+        if (currentLang==="fr") return `Personnes facturées (adultes + enfants dès 16): ${billable}`;
+        if (currentLang==="pt") return `Pessoas faturadas (adultos + crianças a partir de 16): ${billable}`;
+        return `Billable guests (adults + children 16+): ${billable}`;
+      })();
+
+      const lines = [];
+      lines.push(header);
+      lines.push("");
+      lines.push("Adresse: Rua 1 do Monte nr 17, 4730-172 Freiriz");
+      lines.push("");
+      lines.push(`${t.checkin}: ${ci}`);
+      lines.push(`${t.checkout}: ${co}`);
+      lines.push("");
+      lines.push((currentLang==="de") ? `Erwachsene: ${adults}` :
+                 (currentLang==="fr") ? `Adultes : ${adults}` :
+                 (currentLang==="pt") ? `Adultos: ${adults}` :
+                 `Adults: ${adults}`);
+      lines.push(childrenLine);
+      lines.push(billLine);
+      lines.push((currentLang==="de") ? `Gesamtpersonen: ${totalPeople}` :
+                 (currentLang==="fr") ? `Total personnes : ${totalPeople}` :
+                 (currentLang==="pt") ? `Total pessoas: ${totalPeople}` :
+                 `Total people: ${totalPeople}`);
+      lines.push("");
+      lines.push(`${t.pets}: ${pets}`);
+      lines.push("");
+      lines.push(`${t.nights}: ${nights > 0 ? nights : "—"}`);
+      lines.push(`${t.perNight}: ${avg != null ? (eurNumber(avg) + " €") : "—"}`);
+      lines.push(`${t.total}: ${total != null ? (eurNumber(total) + " €") : "—"}`);
+      lines.push("");
+      lines.push("—");
+      lines.push((currentLang==="de") ? "Bestätigung: Zahlungs- & Stornobedingungen wurden akzeptiert." :
+                 (currentLang==="fr") ? "Confirmation : conditions de paiement et d’annulation acceptées." :
+                 (currentLang==="pt") ? "Confirmação: condições de pagamento e cancelamento aceites." :
+                 "Confirmation: payment & cancellation terms accepted.");
+      lines.push("Thank you / Merci / Obrigado / Danke!");
+      return lines.join("\n");
+    }
+
+    // ========= GALLERY / LIGHTBOX =========
+    function openLightbox(src, title){
+      $("lbTitle").textContent = title || "Photo";
+      $("lbImg").src = src;
+      $("lb").classList.add("show");
+      $("lb").setAttribute("aria-hidden", "false");
+    }
+    function closeLightbox(){
+      $("lb").classList.remove("show");
+      $("lb").setAttribute("aria-hidden", "true");
+      $("lbImg").src = "";
+    }
+
+    function fileExists(src){
+      return new Promise((resolve)=>{
+        const im = new Image();
+        im.onload = ()=>resolve(true);
+        im.onerror = ()=>resolve(false);
+        im.src = src;
+      });
+    }
+
+    async function findImageSrc(key){
+      for (const ext of EXT_TRY){
+        const src = `${IMG_DIR}${key}.${ext}`;
+        // eslint-disable-next-line no-await-in-loop
+        if (await fileExists(src)) return { ok:true, src, ext };
+      }
+      return { ok:false, src:"", ext:"" };
+    }
+
+    async function buildGallery(){
+      const g = $("gallery");
+      g.innerHTML = "";
+      const missing = [];
+
+      const hero = await findImageSrc("bungalow");
+      if (hero.ok) $("heroImg").src = hero.src;
+
+      for (const key of imageKeys){
+        // eslint-disable-next-line no-await-in-loop
+        const r = await findImageSrc(key);
+
+        const tile = document.createElement("div");
+        tile.className = "tile";
+
+        const imgwrap = document.createElement("div");
+        imgwrap.className = "imgwrap";
+
+        const img = document.createElement("img");
+        img.alt = key;
+
+        const cap = document.createElement("div");
+        cap.className = "cap";
+
+        const left = document.createElement("span");
+        left.textContent = key;
+
+        const st = document.createElement("span");
+        st.className = "status" + (r.ok ? " ok" : "");
+        st.textContent = r.ok ? "OK" : "Missing";
+
+        cap.appendChild(left);
+        cap.appendChild(st);
+
+        imgwrap.appendChild(img);
+        tile.appendChild(imgwrap);
+        tile.appendChild(cap);
+
+        if (r.ok){
+          img.src = r.src;
+          tile.addEventListener("click", () => openLightbox(r.src, key));
+        } else {
+          missing.push(key);
+          img.src = "data:image/svg+xml;charset=utf-8," + encodeURIComponent(`
+            <svg xmlns="http://www.w3.org/2000/svg" width="1200" height="700">
+              <defs><linearGradient id="g" x1="0" y1="0" x2="0" y2="1">
+                <stop offset="0" stop-color="#111827"/><stop offset="1" stop-color="#0b1220"/></linearGradient></defs>
+              <rect width="100%" height="100%" fill="url(#g)"/>
+              <text x="50%" y="45%" text-anchor="middle" fill="#e5e7eb" font-size="44" font-family="Arial" font-weight="700">Missing photo</text>
+              <text x="50%" y="55%" text-anchor="middle" fill="#94a3b8" font-size="26" font-family="Arial">Add: images/${key}.png or .jpg</text>
+            </svg>
+          `);
+        }
+
+        g.appendChild(tile);
+      }
+
+      const t = T[currentLang];
+      if (missing.length){
+        showWarn($("imgWarn"), t.imgMissing(missing));
+      } else {
+        hideWarn($("imgWarn"));
+      }
+    }
+
+    // ========= APPLY LANGUAGE =========
+    function setLang(lang){
+      currentLang = lang;
+      const t = T[lang];
+      document.documentElement.lang = lang;
+
+      setActiveFlag(lang);
+
+      $("t_brand").textContent = t.brand;
+      $("t_brand_sub").textContent = t.brandSub;
+
+      $("t_nav_price").textContent = t.nav.price;
+      $("t_nav_amen").textContent = t.nav.amen;
+      $("t_nav_area").textContent = t.nav.area;
+      $("t_nav_map").textContent = t.nav.map;
+      $("t_nav_photos").textContent = t.nav.photos;
+
+      $("t_title").textContent = t.title;
+      $("t_subtitle").textContent = t.subtitle;
+
+      $("t_badge1").textContent = t.badges[0];
+      $("t_badge2").textContent = t.badges[1];
+      $("t_badge3").textContent = t.badges[2];
+      $("t_badge4").textContent = t.badges[3];
+      $("t_badge5").textContent = t.badges[4];
+
+      $("t_price_title").textContent = t.priceTitle;
+      $("t_price_sub").textContent = t.priceSub;
+
+      $("t_checkin").textContent = t.checkin;
+      $("t_checkout").textContent = t.checkout;
+
+      $("t_pets").textContent = t.pets;
+      $("t_yes").textContent = t.yes;
+      $("t_no").textContent = t.no;
+
+      $("t_nights").textContent = t.nights;
+      $("t_pernight").textContent = t.perNight;
+      $("t_total").textContent = t.total;
+
+      $("btnWhatsApp").textContent = t.askWA;
+      $("btnEmail").textContent = t.askEmail;
+      $("btnReset").textContent = t.reset;
+
+      $("t_open_maps").textContent = t.openMaps;
+
+      $("t_amen_sub").textContent = t.amenSub;
+
+      // Guests labels
+      $("t_guest_title").textContent = t.guestTitle;
+      $("t_adults").textContent = t.adults;
+      $("t_children").textContent = t.children;
+      $("t_children_ages_note").textContent = t.childrenNote;
+
+      // Terms
+      $("t_terms_title").textContent = t.termsTitle;
+      $("t_terms_text").textContent = t.termsText;
+
+      // Amenities
+      const a = $("amenitiesList");
+      a.innerHTML = "";
+      t.amenities.forEach(x=>{
+        const div = document.createElement("div");
+        div.className = "amenity";
+        div.textContent = x;
+        a.appendChild(div);
+      });
+
+      // Area
+      $("t_area_intro").textContent = t.areaIntro;
+      const area = $("areaList");
+      area.innerHTML = "";
+      t.areaItems.forEach(x=>{
+        const div = document.createElement("div");
+        div.className = "amenity";
+        div.textContent = x;
+        area.appendChild(div);
+      });
+
+      $("t_photos_title").textContent = t.photosTitle;
+      $("t_photos_sub").textContent = t.photosSub;
+      $("t_reload").textContent = t.reload;
+      $("t_folder_hint").textContent = t.folderHint;
+
+      updateBlockedInfo();
+      renderChildAgeInputs();
+      updatePrice();
+      buildGallery();
+      applyInquiryGate();
+    }
+
+    // ========= INIT =========
+    function init(){
+      $("year").textContent = String(new Date().getFullYear());
+
+      $("checkin").addEventListener("change", updatePrice);
+      $("checkout").addEventListener("change", updatePrice);
+      $("pets").addEventListener("change", updatePrice);
+
+      // New guest controls
+      $("adults").addEventListener("change", () => { updatePrice(); });
+      $("childrenCount").addEventListener("change", () => { renderChildAgeInputs(); updatePrice(); });
+
+      // Checkbox gate
+      $("termsChk").addEventListener("change", applyInquiryGate);
+
+      $("btnReset").addEventListener("click", () => {
+        $("checkin").value = "";
+        $("checkout").value = "";
+        $("adults").value = "2";
+        $("childrenCount").value = "0";
+        $("pets").value = "Nein";
+        $("termsChk").checked = false;
+        renderChildAgeInputs();
+        updatePrice();
+        applyInquiryGate();
+      });
+
+      $("btnWhatsApp").addEventListener("click", () => {
+        updatePrice();
+        applyInquiryGate();
+        if ($("btnWhatsApp").disabled) return;
+        const text = buildInquiryText();
+        const url = "https://wa.me/" + WHATSAPP_NUMBER + "?text=" + encodeURIComponent(text);
+        window.open(url, "_blank", "noopener");
+      });
+
+      $("btnEmail").addEventListener("click", () => {
+        updatePrice();
+        applyInquiryGate();
+        if ($("btnEmail").disabled) return;
+        const subject =
+          (currentLang==="de") ? "Anfrage – Bungalow Freiriz (Vila Verde)" :
+          (currentLang==="fr") ? "Demande – Bungalow Freiriz (Vila Verde)" :
+          (currentLang==="pt") ? "Pedido – Bungalow Freiriz (Vila Verde)" :
+          "Request – Bungalow Freiriz (Vila Verde)";
+        const body = buildInquiryText();
+        window.location.href = "mailto:" + EMAIL_TO +
+          "?subject=" + encodeURIComponent(subject) +
+          "&body=" + encodeURIComponent(body);
+      });
+
+      $("reloadBtn").addEventListener("click", buildGallery);
+
+      $("lbClose").addEventListener("click", closeLightbox);
+      $("lb").addEventListener("click", (e) => { if (e.target.id === "lb") closeLightbox(); });
+      document.addEventListener("keydown", (e) => { if (e.key === "Escape") closeLightbox(); });
+
+      dateSelectionOk = false;
+      $("btnWhatsApp").disabled = true;
+      $("btnEmail").disabled = true;
+      setLang("de");
+    }
+
+    init();
+  </script>
+</body>
+</html>
